@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.SplashTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#878383</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splashlogo</item>
+        <item name="windowSplashScreenAnimationDuration">200</item>
+        //set theme that follows your splash screen
+        <item name="postSplashScreenTheme">@style/Theme.SuitCase</item>
+    </style>
+</resources>

@@ -11,6 +11,6 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="SuitCase Menu"
+        android:text="User Logout"
         android:textColor="@color/white"/>
 </LinearLayout>

@@ -3,18 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/delete"
-        android:icon="@drawable/ic_delete_24"
-        app:showAsAction="never"
-        android:title="Delete Item"/>
-    <item
         android:id="@+id/share"
         android:icon="@drawable/ic_baseline_share_24"
-        app:showAsAction="never"
-        android:title="Share Item"/>
+        app:showAsAction="always"
+        android:title="Share"/>
     <item
-        android:id="@+id/locate"
-        android:icon="@drawable/ic_baseline_location_on_24"
-        app:showAsAction="never"
-        android:title="Get Location"/>
+        android:id="@+id/delete"
+        android:icon="@drawable/ic_delete_24"
+        app:showAsAction="always"
+        android:title="Delete"/>
+
 </menu>

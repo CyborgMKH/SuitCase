@@ -57,13 +57,6 @@ public class Suitcase_Main_Menu extends AppCompatActivity {
             }
         });
 
-        binding.btnPurchaseMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Purchased_item_list_page.class);
-                startActivity(intent);
-            }
-        });
 
         binding.LogOutMenu.setOnClickListener(new View.OnClickListener() {
             @Override

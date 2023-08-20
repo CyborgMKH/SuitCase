@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#878383"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:id="@+id/splash_Screen"
+    tools:context=".splashScreen">
+    <ImageView
+        android:id="@+id/splash_img"
+        android:layout_width="198dp"
+        android:layout_height="198dp"
+        android:background="@drawable/logo"
+        android:elevation="10dp" />
+
+    <TextView
+        android:id="@+id/splash_txt1"
+        android:layout_width="142dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="300dp"
+        android:text="SuitCase"
+        android:textAppearance="@style/Splash"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/splash_txt2"
+        android:layout_width="106dp"
+        android:layout_height="15dp"
+        android:text="List. Locate. Shop."
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+</LinearLayout>

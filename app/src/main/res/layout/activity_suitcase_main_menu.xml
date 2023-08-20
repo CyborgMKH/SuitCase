@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#878383"
+    tools:context=".Suitcase_Main_Menu">
+
+    <ImageView
+        android:id="@+id/splash_img"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/mainmenu"
+        android:elevation="10dp" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnPurchase_Menu"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/splash_img"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="216dp"
+        android:layout_marginEnd="10dp"
+        android:background="#6271FF"
+        android:gravity="center"
+        android:text="VIEW PURCHASED ITEM"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/LogOutMenu"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/btnPurchase_Menu"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="10dp"
+        android:background="#FF3535"
+        android:text="Log out"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_navigation_menu" />
+
+</RelativeLayout>

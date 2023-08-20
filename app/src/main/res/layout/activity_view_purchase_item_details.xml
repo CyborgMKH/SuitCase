@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#878383"
+android:orientation="vertical"
+tools:context=".ViewPurchaseItemDetails">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/addItemDummyImg1"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:src="@drawable/dummy"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="1dp" />
+
+<com.google.android.material.textfield.TextInputLayout
+    android:layout_marginTop="30dp"
+    android:layout_below="@+id/addItemDummyImg1"
+    android:id="@+id/txt1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Name"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textColorHint="@color/black"
+        android:inputType="text"
+        android:id="@+id/txt_addItem_Name"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+
+<com.google.android.material.textfield.TextInputLayout
+    android:layout_marginTop="10dp"
+    android:layout_below="@id/txt1"
+    android:id="@+id/txt2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Item Price"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textColorHint="@color/black"
+        android:inputType="text"
+        android:id="@+id/txt_addItem_Price"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+
+<com.google.android.material.textfield.TextInputLayout
+    android:layout_marginTop="10dp"
+    android:layout_below="@id/txt2"
+    android:id="@+id/txt3"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Location"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textColorHint="@color/black"
+        android:inputType="text"
+        android:id="@+id/txt_addItem_Location"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+
+<com.google.android.material.textfield.TextInputLayout
+    android:layout_marginTop="10dp"
+    android:layout_below="@id/txt3"
+    android:id="@+id/txt4"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+    <EditText
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Item Description"
+        android:textSize="22sp"
+        android:textColorHint="@color/black"
+        android:inputType="textMultiLine"
+        android:maxLines= "4"
+        android:id="@+id/txt_addItem_Description"/>
+
+</com.google.android.material.textfield.TextInputLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_centerInParent="true"
+        android:id="@+id/purchasedItemDelete"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="103dp"
+        android:background="#FF3535"
+        android:drawablePadding="4dp"
+        android:drawableTint="#ff0000"
+        android:text="DELETE"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_navigation_menu" />
+
+</RelativeLayout>

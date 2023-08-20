@@ -6,8 +6,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -84,14 +85,27 @@ public class ViewPurchaseItemDetails extends AppCompatActivity {
         getAndSetIntentData();
         MyDbHelper myDB = new MyDbHelper(ViewPurchaseItemDetails.this);
 
-        binding.purchasedItemDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //methods to delete the item
-                confirmDialog();
-            }
-        });
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.delete_menu_item, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            // Handle the home/up navigation button click
+            // Start your desired activity here
+            Intent intent = new Intent(this, Suitcase_Main_Menu.class);
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.deleteThis) {
+            confirmDialog();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void getAndSetIntentData() {
@@ -137,6 +151,7 @@ public class ViewPurchaseItemDetails extends AppCompatActivity {
                 // Refresh activity
                 Intent intent = new Intent(ViewPurchaseItemDetails.this, Purchased_item_list_page.class);
                 startActivity(intent);
+                overridePendingTransition(0, 0);
                 finish();
             }
         });

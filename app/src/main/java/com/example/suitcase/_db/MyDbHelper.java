@@ -150,6 +150,12 @@ public class MyDbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " +Constants.TABLE_NAME);
     }
+
+    //methods to delete all records
+    public void deleteAllPurchasedData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " +Constants.Purchase_Tbl_name);
+    }
     //methods to delete single records
     public void deleteRecord(String name) {
         SQLiteDatabase db = getWritableDatabase();

@@ -161,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
                 // Refresh activity
                 Intent intent = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(intent);
+                overridePendingTransition(0, 0);
                 finish();
             }
         });
@@ -172,7 +173,4 @@ public class MainActivity extends AppCompatActivity {
         });
         builder.create().show();
     }
-    //Setting up Button Navigation
-
-
 }

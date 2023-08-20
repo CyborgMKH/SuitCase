@@ -11,27 +11,29 @@ tools:context=".ViewPurchaseItemDetails">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/addItemDummyImg1"
-        android:layout_width="190dp"
-        android:layout_height="190dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
         android:src="@drawable/dummy"
         app:civ_border_color="#FF000000"
         app:civ_border_width="1dp" />
 
 <com.google.android.material.textfield.TextInputLayout
-    android:layout_marginTop="30dp"
+    android:layout_marginTop="10dp"
     android:layout_below="@+id/addItemDummyImg1"
     android:id="@+id/txt1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:focusable="true"
+    android:padding="10dp"
     android:focusableInTouchMode="true">
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Name"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="22sp"
         android:textColorHint="@color/black"
         android:inputType="text"
@@ -46,12 +48,13 @@ tools:context=".ViewPurchaseItemDetails">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:focusable="true"
+    android:padding="10dp"
     android:focusableInTouchMode="true">
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Item Price"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="22sp"
         android:textColorHint="@color/black"
         android:inputType="text"
@@ -66,12 +69,13 @@ tools:context=".ViewPurchaseItemDetails">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:focusable="true"
+    android:padding="10dp"
     android:focusableInTouchMode="true">
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Location"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="22sp"
         android:textColorHint="@color/black"
         android:inputType="text"
@@ -86,35 +90,20 @@ tools:context=".ViewPurchaseItemDetails">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:focusable="true"
+    android:padding="10dp"
     android:focusableInTouchMode="true">
     <EditText
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Item Description"
+        android:maxLines="3"
         android:textSize="22sp"
         android:textColorHint="@color/black"
         android:inputType="textMultiLine"
-        android:maxLines= "4"
         android:id="@+id/txt_addItem_Description"/>
 
 </com.google.android.material.textfield.TextInputLayout>
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_centerInParent="true"
-        android:id="@+id/purchasedItemDelete"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="103dp"
-        android:background="#FF3535"
-        android:drawablePadding="4dp"
-        android:drawableTint="#ff0000"
-        android:text="DELETE"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

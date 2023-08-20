@@ -1,13 +1,18 @@
 package com.example.suitcase;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.CursorWindow;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -102,5 +107,57 @@ public class Purchased_item_list_page extends AppCompatActivity {
         recyclerView.setAdapter(purchaseCustomAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(Purchased_item_list_page.this));
         purchaseCustomAdapter.notifyDataSetChanged();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.delete_all_purchased_list, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            // Handle the home/up navigation button click
+            // Start your desired activity here
+            Intent intent = new Intent(this, Suitcase_Main_Menu.class);
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.delete_all_purchased) {
+            confirmDialog();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            recreate();
+        }
+    }
+    void confirmDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Delete All Data?");
+        builder.setMessage("Are you sure to delete all Data?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                MyDbHelper myDB = new MyDbHelper(Purchased_item_list_page.this);
+                myDB.deleteAllPurchasedData();
+
+                // Refresh activity
+                Intent intent = new Intent(Purchased_item_list_page.this, Purchased_item_list_page.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.create().show();
     }
 }

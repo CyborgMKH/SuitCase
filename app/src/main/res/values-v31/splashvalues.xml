@@ -5,7 +5,7 @@
         <item name="windowSplashScreenBackground">#878383</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/splashlogo</item>
         <item name="windowSplashScreenAnimationDuration">200</item>
-        <item name="android:windowSplashScreenBrandingImage">@drawable/branding</item>
+        <item name="android:windowSplashScreenBrandingImage">@drawable/branding1</item>
         //set theme that follows your splash screen
         <item name="postSplashScreenTheme">@style/Theme.SuitCase</item>
     </style>

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -84,6 +85,7 @@ public class View_Update_Delete extends AppCompatActivity {
         //Disable the name edit text
         txtName.setEnabled(false);
 
+        //adding clicklistner
         binding.updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,6 +102,7 @@ public class View_Update_Delete extends AppCompatActivity {
                 finish();
             }
         });
+        //adding click listener to the imageView so that user can perform selection/replacement of images for update of image
         binding.addItemImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,7 +118,8 @@ public class View_Update_Delete extends AppCompatActivity {
     private void getAndSetIntentData() {
         if (getIntent().hasExtra("name") && getIntent().hasExtra("price") && getIntent().hasExtra("location") && getIntent().hasExtra("descriptions") && getIntent().hasExtra("image")) {
 
-            byte[] imageBytes = getIntent().getByteArrayExtra("image"); // Retrieve the image data as a byte array
+            // Retrieve the image data as a byte array and other fields in their respective datatype
+            byte[] imageBytes = getIntent().getByteArrayExtra("image");
             String name = getIntent().getStringExtra("name");
             String price = getIntent().getStringExtra("price");
             String location = getIntent().getStringExtra("location");
@@ -157,6 +161,7 @@ public class View_Update_Delete extends AppCompatActivity {
         inflater.inflate(R.menu.view_update_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
+    //adding confirmDialog() method initialize when user will click delete option
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.delete) {
@@ -164,13 +169,17 @@ public class View_Update_Delete extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    //overriding image view, when user selects pictures for update it shows immediatly in the text after selection
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            recreate();
+        if (data != null) {
+            Uri uri = data.getData();
+            binding.addItemImg.setImageURI(uri);
         }
     }
+    //confirm dialogue for confirming the deletion of the item in  users choice
     void confirmDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Delete All Data?");
@@ -180,7 +189,7 @@ public class View_Update_Delete extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 MyDbHelper myDB = new MyDbHelper(View_Update_Delete.this);
 
-                // Get the text from the txtName TextView
+                // Get the text from the txtName TextView and compare it using deleteOneMainRow in database and perform deletion
                 String name = txtName.getText().toString().trim();
                 myDB.deleteOneMainRow(name);
 
@@ -190,10 +199,11 @@ public class View_Update_Delete extends AppCompatActivity {
                 finish();
             }
         });
+        //when clicking the "No" options in dialogue box nothing will be happen and the pop up will be closed.
+        //And user will be stay in the same page
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
             }
         });
         builder.create().show();

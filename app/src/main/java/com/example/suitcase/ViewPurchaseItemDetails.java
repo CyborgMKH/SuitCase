@@ -27,7 +27,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class ViewPurchaseItemDetails extends AppCompatActivity {
     ActivityViewPurchaseItemDetailsBinding binding;
     ImageView Img;
-    TextView txtName, txtPrice, txtLocation, txtDescription;
+    TextView txtName, txtPrice, txtDescription;
     BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,14 +71,12 @@ public class ViewPurchaseItemDetails extends AppCompatActivity {
         Img = binding.addItemDummyImg1;
         txtName = binding.txtAddItemName;
         txtPrice = binding.txtAddItemPrice;
-        txtLocation = binding.txtAddItemLocation;
         txtDescription = binding.txtAddItemDescription;
 
         //disabling fields
         Img.setEnabled(false);
         txtName.setEnabled(false);
         txtPrice.setEnabled(false);
-        txtLocation.setEnabled(false);
         txtDescription.setEnabled(false);
 
 
@@ -109,12 +107,11 @@ public class ViewPurchaseItemDetails extends AppCompatActivity {
     }
 
     private void getAndSetIntentData() {
-        if (getIntent().hasExtra("name") && getIntent().hasExtra("price") && getIntent().hasExtra("location") && getIntent().hasExtra("descriptions") && getIntent().hasExtra("image")) {
+        if (getIntent().hasExtra("name") && getIntent().hasExtra("price")  && getIntent().hasExtra("descriptions") && getIntent().hasExtra("image")) {
 
             byte[] imageBytes = getIntent().getByteArrayExtra("image"); // Retrieve the image data as a byte array
             String name = getIntent().getStringExtra("name");
             String price = getIntent().getStringExtra("price");
-            String location = getIntent().getStringExtra("location");
             String descriptions = getIntent().getStringExtra("descriptions");
 
             // Convert the byte array back to a Bitmap and set it to the ImageView
@@ -124,11 +121,10 @@ public class ViewPurchaseItemDetails extends AppCompatActivity {
             // Set the retrieved data to the respective TextView fields
             binding.txtAddItemName.setText(name);
             binding.txtAddItemPrice.setText(price);
-            binding.txtAddItemLocation.setText(location);
             binding.txtAddItemDescription.setText(descriptions);
 
             // Log the retrieved data
-            Log.d("View_Update_Delete", "image"+imageBitmap+"name: " + name + ", price: " + price + ", location: " + location + ", descriptions: " + descriptions);
+            Log.d("View_Update_Delete", "image"+imageBitmap+"name: " + name + ", price: " + price +  ", descriptions: " + descriptions);
         } else {
             // Handle the case where data is not available in the Intent
             // You can display a toast message or take any other appropriate action

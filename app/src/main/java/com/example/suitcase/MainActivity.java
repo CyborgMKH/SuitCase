@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     MyDbHelper mdb;
     RecyclerView recyclerView;
-    ArrayList<String> name, price, descriptions, location;
+    ArrayList<String> name, price, descriptions;
     ArrayList<byte[]> image;
     CustomAdapter customAdapter;
     BottomNavigationView bottomNavigationView;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
 
+        //setting up onSelectListener that navigate user to corresponding application classes
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -89,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
         name = new ArrayList<>();
         price = new ArrayList<>();
         descriptions = new ArrayList<>();
-        location = new ArrayList<>();
 
         // Fetch data from the database
         Cursor cursor = mdb.getAllData();
@@ -99,13 +100,12 @@ public class MainActivity extends AppCompatActivity {
                 name.add(cursor.getString(1));
                 price.add(cursor.getString(2));
                 descriptions.add(cursor.getString(3));
-                location.add(cursor.getString(4));
             } while (cursor.moveToNext());
 
             cursor.close();
         }
         // Create and set up the adapter
-        customAdapter = new CustomAdapter(this, image, name, price, descriptions, location);
+        customAdapter = new CustomAdapter(this, image, name, price, descriptions);
         recyclerView.setAdapter(customAdapter);
         customAdapter.setUpItemTouchHelper(recyclerView); // Enable swipe-to-delete
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
@@ -138,6 +138,8 @@ public class MainActivity extends AppCompatActivity {
             return true;
         } else if (item.getItemId() == R.id.delete_all) {
             confirmDialog();
+        } else if (item.getItemId() == R.id.shareAll){
+            shareAllItems();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -173,4 +175,37 @@ public class MainActivity extends AppCompatActivity {
         });
         builder.create().show();
     }
+    private void shareAllItems() {
+        StringBuilder messageBuilder = new StringBuilder("--------ITEMS LISTS--------\n\n");
+        int itemNumber = 1;
+
+        for (int i = 0; i < name.size(); i++) {
+            String itemName = name.get(i);
+            String itemPrice = price.get(i);
+            String itemDescription = descriptions.get(i);
+
+            // Append item number and details to the message
+            messageBuilder.append(itemNumber).append(".\n")
+                    .append("Item: ").append(itemName).append("\n")
+                    .append("Price: ").append(itemPrice).append("\n")
+                    .append("Description: ").append(itemDescription).append("\n\n");
+
+            itemNumber++; // Increment the item number
+        }
+
+        String message = messageBuilder.toString().trim();
+
+        // Create an intent to share the item information
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+
+        // Check if there is an app available to handle the intent
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "No messaging app found to share.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

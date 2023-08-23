@@ -35,6 +35,15 @@ public class LoginDBHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+    public Boolean updatePassword(String email, String password) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("password", password);
+
+        int rowsAffected = sqLiteDatabase.update("Users", contentValues, "email=?", new String[]{email});
+        return rowsAffected > 0;
+    }
+
     public Boolean checkEmail(String email){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Cursor cursor=sqLiteDatabase.rawQuery("select* from Users where email=?",new String[]{email});

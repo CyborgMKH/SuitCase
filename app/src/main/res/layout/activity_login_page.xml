@@ -72,7 +72,7 @@
 
     <TextView
         android:layout_gravity="center"
-        android:id="@+id/forgetpasstxt_btn"
+        android:id="@+id/forgetpasstxtBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Forgotten Password?"

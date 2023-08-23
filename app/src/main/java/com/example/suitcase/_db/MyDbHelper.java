@@ -46,7 +46,8 @@ public class MyDbHelper extends SQLiteOpenHelper {
         db.execSQL(Constants.CREATE_PURCHASE_TABLE);
     }
 
-    public boolean updateRecord(byte[] image, String name, String price, String location, String descriptions) {
+    //method for updating main data of the list
+    public boolean updateRecord(byte[] image, String name, String price, String descriptions) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         boolean success = false;
 
@@ -55,7 +56,6 @@ public class MyDbHelper extends SQLiteOpenHelper {
             contentValues.put("image", image);
             contentValues.put("name", name);
             contentValues.put("price", price);
-            contentValues.put("location", location);
             contentValues.put("descriptions", descriptions);
 
             // Specify the WHERE clause to update the record with the given name
@@ -100,7 +100,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
     }
 
     //methods to insert records
-    public boolean insertRecord(byte[] image, String name, String price, String location, String descriptions) {
+    public boolean insertRecord(byte[] image, String name, String price, String descriptions) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         boolean success = false;
         try{
@@ -108,7 +108,6 @@ public class MyDbHelper extends SQLiteOpenHelper {
             contentValues.put("image", image);
             contentValues.put("name", name);
             contentValues.put("price", price);
-            contentValues.put("location", location);
             contentValues.put("descriptions", descriptions);
 
             long result = sqLiteDatabase.insert(Constants.TABLE_NAME, null, contentValues);
@@ -123,7 +122,7 @@ public class MyDbHelper extends SQLiteOpenHelper {
     }
 
     //methods to insert records
-    public boolean insertPurchasedRecord(byte[] image, String name, String price, String location, String descriptions) {
+    public boolean insertPurchasedRecord(byte[] image, String name, String price, String descriptions) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         boolean success = false;
         try{
@@ -131,7 +130,6 @@ public class MyDbHelper extends SQLiteOpenHelper {
             contentValues.put("image", image);
             contentValues.put("name", name);
             contentValues.put("price", price);
-            contentValues.put("location", location);
             contentValues.put("descriptions", descriptions);
 
             long result = sqLiteDatabase.insert(Constants.Purchase_Tbl_name, null, contentValues);

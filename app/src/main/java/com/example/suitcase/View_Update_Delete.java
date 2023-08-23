@@ -33,7 +33,7 @@ import java.io.ByteArrayOutputStream;
 public class View_Update_Delete extends AppCompatActivity {
     ActivityViewUpdateDeleteBinding binding;
     ImageView Img;
-    TextView txtName, txtPrice, txtLocation, txtDescription;
+    TextView txtName, txtPrice, txtDescription;
     BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,29 +72,28 @@ public class View_Update_Delete extends AppCompatActivity {
             }
         });
 
+        //initializing corresponding IDs for View Update and Delete the main list data
         Img = binding.addItemImg;
         txtName = binding.txtItemName;
         txtPrice = binding.txtItemPrice;
-        txtLocation = binding.txtItemLocation;
         txtDescription = binding.txtItemDescription;
 
 
         getAndSetIntentData();
         MyDbHelper myDB = new MyDbHelper(View_Update_Delete.this);
 
-        //Disable the name edit text
+        //Disable the name edit text as I have taken Name as primary key
         txtName.setEnabled(false);
 
-        //adding clicklistner
+        //adding click listener
         binding.updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 byte[] image = imageViewToByte(Img);
                 String name = txtName.getText().toString().trim();
                 String price = txtPrice.getText().toString().trim();
-                String location = txtLocation.getText().toString().trim();
                 String descriptions = txtDescription.getText().toString().trim();
-                myDB.updateRecord(image, name, price, location, descriptions);
+                myDB.updateRecord(image, name, price, descriptions);
 
                 //start new activity immediately updating item
                 Intent intent = new Intent(View_Update_Delete.this, MainActivity.class);
@@ -116,13 +115,12 @@ public class View_Update_Delete extends AppCompatActivity {
     }
 
     private void getAndSetIntentData() {
-        if (getIntent().hasExtra("name") && getIntent().hasExtra("price") && getIntent().hasExtra("location") && getIntent().hasExtra("descriptions") && getIntent().hasExtra("image")) {
+        if (getIntent().hasExtra("name") && getIntent().hasExtra("price") && getIntent().hasExtra("descriptions") && getIntent().hasExtra("image")) {
 
             // Retrieve the image data as a byte array and other fields in their respective datatype
             byte[] imageBytes = getIntent().getByteArrayExtra("image");
             String name = getIntent().getStringExtra("name");
             String price = getIntent().getStringExtra("price");
-            String location = getIntent().getStringExtra("location");
             String descriptions = getIntent().getStringExtra("descriptions");
 
             // Convert the byte array back to a Bitmap and set it to the ImageView
@@ -132,11 +130,10 @@ public class View_Update_Delete extends AppCompatActivity {
             // Set the retrieved data to the respective TextView fields
             binding.txtItemName.setText(name);
             binding.txtItemPrice.setText(price);
-            binding.txtItemLocation.setText(location);
             binding.txtItemDescription.setText(descriptions);
 
             // Log the retrieved data
-            Log.d("View_Update_Delete", "image"+imageBitmap+"name: " + name + ", price: " + price + ", location: " + location + ", descriptions: " + descriptions);
+            Log.d("View_Update_Delete", "image"+imageBitmap+"name: " + name + ", price: " + price + ", descriptions: " + descriptions);
         } else {
             // Handle the case where data is not available in the Intent
             // You can display a toast message or take any other appropriate action
@@ -144,7 +141,7 @@ public class View_Update_Delete extends AppCompatActivity {
         }
     }
 
-    //imageViewToByte method to convert image into bytes and store it into array of byts and store it in database
+    //imageViewToByte method to convert image into bytes and store it into array of bytes and store it in database
     private byte[] imageViewToByte(ImageView image) {
         Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -166,6 +163,9 @@ public class View_Update_Delete extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.delete) {
             confirmDialog();
+        }
+        else if (item.getItemId()== R.id.share){
+            shareItem();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -207,5 +207,24 @@ public class View_Update_Delete extends AppCompatActivity {
             }
         });
         builder.create().show();
+    }
+    private void shareItem() {
+        String name = txtName.getText().toString().trim();
+        String price = txtPrice.getText().toString().trim();
+        String descriptions = txtDescription.getText().toString().trim();
+
+        String message = "Item: " + name + "\nPrice: " + price + "\nDescription: " + descriptions;
+
+        // Create an intent to share the item information
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+
+        // Check if there is an app available to handle the intent
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "No messaging app found to share.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

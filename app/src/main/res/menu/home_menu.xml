@@ -7,4 +7,9 @@
         android:icon="@drawable/ic_delete_24"
         app:showAsAction="never"
         android:title="Delete All"/>
+    <item
+        android:id="@+id/shareAll"
+        android:icon="@drawable/ic_baseline_share_24"
+        app:showAsAction="never"
+        android:title="Share All"/>
 </menu>

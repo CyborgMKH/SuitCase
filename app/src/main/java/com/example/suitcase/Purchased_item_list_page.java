@@ -29,7 +29,7 @@ import java.util.ArrayList;
 public class Purchased_item_list_page extends AppCompatActivity {
     ActivityPurchasedItemListPageBinding binding;
     RecyclerView recyclerView;
-    ArrayList<String> name, price, descriptions, location;
+    ArrayList<String> name, price, descriptions;
     ArrayList<byte[]> image;
     PurchaseCustomAdapter purchaseCustomAdapter;
     MyDbHelper mdb;
@@ -59,6 +59,7 @@ public class Purchased_item_list_page extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.purchased);
 
+        //setting up onSelectListener that navigate user to corresponding application classes
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -87,7 +88,6 @@ public class Purchased_item_list_page extends AppCompatActivity {
         name = new ArrayList<>();
         price = new ArrayList<>();
         descriptions = new ArrayList<>();
-        location = new ArrayList<>();
 
         // Fetch data from the database
         Cursor cursor = mdb.getAllPurchasedData();
@@ -97,13 +97,12 @@ public class Purchased_item_list_page extends AppCompatActivity {
                 name.add(cursor.getString(1));
                 price.add(cursor.getString(2));
                 descriptions.add(cursor.getString(3));
-                location.add(cursor.getString(4));
             } while (cursor.moveToNext());
 
             cursor.close();
         }
         // Create and set up the adapter
-        purchaseCustomAdapter = new PurchaseCustomAdapter(this, image, name, price, descriptions, location);
+        purchaseCustomAdapter = new PurchaseCustomAdapter(this, image, name, price, descriptions);
         recyclerView.setAdapter(purchaseCustomAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(Purchased_item_list_page.this));
         purchaseCustomAdapter.notifyDataSetChanged();

@@ -63,26 +63,6 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_marginTop="10dp"
         android:layout_below="@id/txt2"
-        android:id="@+id/txt3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:focusable="true"
-        android:padding="10dp"
-        android:focusableInTouchMode="true">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Location"
-            android:textSize="22sp"
-            android:textColorHint="@color/black"
-            android:inputType="text"
-            android:id="@+id/txt_addItem_Location"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/txt3"
         android:id="@+id/txt4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

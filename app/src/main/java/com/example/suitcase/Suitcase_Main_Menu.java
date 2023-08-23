@@ -36,11 +36,11 @@ public class Suitcase_Main_Menu extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.user);
 
+        //setting up onSelectListener that navigate user to corresponding application classes
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment = null;
-
                 switch (item.getItemId()) {
                     case R.id.purchased:
                         startActivity(new Intent(getApplicationContext(), Purchased_item_list_page.class));
@@ -57,7 +57,7 @@ public class Suitcase_Main_Menu extends AppCompatActivity {
             }
         });
 
-
+        //adding click listener for popping out the dialogue box with some texts given in method confirmDialog()
         binding.LogOutMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +66,7 @@ public class Suitcase_Main_Menu extends AppCompatActivity {
         });
     }
 
+    //confirmDialog method for the operation of logging out from SuitCase app in users choice Yes/no
     void confirmDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Log out from SuitCase?");
@@ -73,7 +74,8 @@ public class Suitcase_Main_Menu extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // Refresh activity
+                // Refresh activity and user will be logout of the suitcase app
+                // and activity will be finished and again user have to login to enter inside Suitcase app
                 Intent intent = new Intent(Suitcase_Main_Menu.this, Login_page.class);
                 startActivity(intent);
                 finish();
@@ -83,6 +85,7 @@ public class Suitcase_Main_Menu extends AppCompatActivity {
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                //if user click No on the dialogue box user stays in the same page
             }
         });
         builder.create().show();

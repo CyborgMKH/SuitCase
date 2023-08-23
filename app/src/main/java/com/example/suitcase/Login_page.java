@@ -14,12 +14,14 @@ import androidx.core.splashscreen.SplashScreen;
 import com.example.suitcase.databinding.ActivityLoginPageBinding;
 
 public class Login_page extends AppCompatActivity {
+    //validating vires
     ActivityLoginPageBinding binding;
     LoginDBHelper loginDBHelper;
     boolean isReady = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //initializing splashscreen from splash API
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         View content = findViewById(android.R.id.content);
         content.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
@@ -66,6 +68,7 @@ public class Login_page extends AppCompatActivity {
                 }
             }
         });
+        //click listener on createAccountBtn where user can create new account
         binding.createAccountBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,8 +76,17 @@ public class Login_page extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //click listener on on forgetpassBtn that redirect when clicked in Forget_Password_Page.class
+        binding.forgetpasstxtBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Forget_Password_Page.class);
+                startActivity(intent);
+            }
+        });
     }
 
+    //setting up splash api (SplashScreen on android 12 or more)
     private void dismissSplashScreen() {
         new Handler().postDelayed(new Runnable() {
             @Override

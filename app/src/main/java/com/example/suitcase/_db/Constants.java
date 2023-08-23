@@ -18,7 +18,6 @@ public class Constants {
     public static final String C_IMAGE = "image";
     public static final String C_NAME = "name";
     public static final String C_PRICE = "price";
-    public static final String C_LOCATION = "location";
     public static final String C_DESCRIPTIONS = "descriptions";
 
     //Create table query
@@ -26,7 +25,6 @@ public class Constants {
             + C_IMAGE + " BLOB, "
             + C_NAME + " TEXT PRIMARY KEY, "
             + C_PRICE + " PRICE, "
-            + C_LOCATION + " TEXT, "
             + C_DESCRIPTIONS + " TEXT"
             + ")";
 
@@ -36,7 +34,6 @@ public class Constants {
             + C_IMAGE + " BLOB, "
             + C_NAME + " TEXT PRIMARY KEY, "
             + C_PRICE + " PRICE, "
-            + C_LOCATION + " TEXT, "
             + C_DESCRIPTIONS + " TEXT"
             + ")";
 }

@@ -8,7 +8,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        // Initialize TooLargeTool in your Application class
+        // Initialize TooLargeTool in the Application class
         TooLargeTool.startLogging(this);
     }
 }

@@ -48,6 +48,7 @@ public class Add_Items_page extends AppCompatActivity {
         //setting up bottom navigator
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
+        //setting up onSelectListener that navigate user to corresponding application classes
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -74,7 +75,6 @@ public class Add_Items_page extends AppCompatActivity {
         ImageView Img = binding.addItemDummyImg;
         TextView txtName = binding.txtAddItemName;
         TextView txtPrice = binding.txtAddItemPrice;
-        TextView txtLocation = binding.txtAddItemLocation;
         TextView txtDescription = binding.txtAddItemDescription;
 
         binding.addButton.setOnClickListener(new View.OnClickListener() {
@@ -84,11 +84,10 @@ public class Add_Items_page extends AppCompatActivity {
                 byte[] image = imageViewToByte(Img);
                 String name = txtName.getText().toString().trim();
                 String price = txtPrice.getText().toString().trim();
-                String location = txtLocation.getText().toString().trim();
                 String descriptions = txtDescription.getText().toString().trim();
 
                 //logics for inserting data in the table
-                if (image==null||name.isEmpty()||price.isEmpty()||location.isEmpty()||descriptions.isEmpty()){
+                if (image==null||name.isEmpty()||price.isEmpty()||descriptions.isEmpty()){
                     Toast.makeText(Add_Items_page.this, "Every Fields are mandatory !", Toast.LENGTH_SHORT).show();
                     return; //stop further execution
                 }
@@ -96,7 +95,7 @@ public class Add_Items_page extends AppCompatActivity {
                     Toast.makeText(Add_Items_page.this, "Item data already exist. Try adding another !", Toast.LENGTH_SHORT).show();
                     return;// stop further execution
                 }
-                boolean inserted = mdb.insertRecord(image, name, price, location, descriptions);
+                boolean inserted = mdb.insertRecord(image, name, price, descriptions);
                 if (inserted){
                     Toast.makeText(Add_Items_page.this, "Item added successfully !", Toast.LENGTH_SHORT).show();
 
@@ -104,7 +103,6 @@ public class Add_Items_page extends AppCompatActivity {
                     Img.setImageResource(R.drawable.dummy);
                     txtName.setText("");
                     txtPrice.setText("");
-                    txtLocation.setText("");
                     txtDescription.setText("");
                 }else{
                     Toast.makeText(Add_Items_page.this, "Insertion failed !", Toast.LENGTH_SHORT).show();

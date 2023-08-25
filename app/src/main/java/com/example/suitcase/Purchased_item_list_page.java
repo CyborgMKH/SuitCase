@@ -53,7 +53,7 @@ public class Purchased_item_list_page extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.purchased_title);
 
         //Add Icon to the left of the title in the action bar in android
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(binding.getRoot());
         //setting up bottom navigator
         bottomNavigationView = findViewById(R.id.bottom_navigation);

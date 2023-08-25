@@ -28,8 +28,6 @@ public class Suitcase_Main_Menu extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.suitcase_menu_title);
 
-        //Add Icon to the left of the title in the action bar in android
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(binding.getRoot());
 
         //setting up bottom navigator

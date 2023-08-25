@@ -18,6 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SuitCase"
         tools:targetApi="31">
+
         <!-- Define the FileProvider for sharing files -->
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -29,9 +30,15 @@
                 android:resource="@xml/file_paths" />
         </provider>
         <activity
+            android:name=".Purchased_item_list_page"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ViewPurchaseItemDetails"
-            android:exported="false"
-            android:parentActivityName=".Purchased_item_list_page">
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -51,22 +58,8 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".Purchased_item_list_page"
-            android:exported="false"
-            android:parentActivityName=".Suitcase_Main_Menu">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Suitcase_Main_Menu"
-            android:exported="false"
-            android:parentActivityName=".Add_Items_page">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
+
         <activity
             android:name=".Add_Items_page"
             android:exported="false"
@@ -96,6 +89,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".Suitcase_Main_Menu"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="false">
             <meta-data
@@ -103,6 +103,4 @@
                 android:value="" />
         </activity>
     </application>
-
-
 </manifest>

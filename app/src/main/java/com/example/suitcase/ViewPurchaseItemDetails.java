@@ -39,7 +39,6 @@ public class ViewPurchaseItemDetails extends AppCompatActivity {
 
         //Add Icon to the left of the title in the action bar in android
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         setContentView(binding.getRoot());
 
         //setting up bottom navigator
@@ -67,7 +66,6 @@ public class ViewPurchaseItemDetails extends AppCompatActivity {
                 return false;
             }
         });
-
         Img = binding.addItemDummyImg1;
         txtName = binding.txtAddItemName;
         txtPrice = binding.txtAddItemPrice;
@@ -78,7 +76,6 @@ public class ViewPurchaseItemDetails extends AppCompatActivity {
         txtName.setEnabled(false);
         txtPrice.setEnabled(false);
         txtDescription.setEnabled(false);
-
 
         getAndSetIntentData();
         MyDbHelper myDB = new MyDbHelper(ViewPurchaseItemDetails.this);
@@ -97,7 +94,7 @@ public class ViewPurchaseItemDetails extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             // Handle the home/up navigation button click
             // Start your desired activity here
-            Intent intent = new Intent(this, Suitcase_Main_Menu.class);
+            Intent intent = new Intent(this, Purchased_item_list_page.class);
             startActivity(intent);
             return true;
         } else if (item.getItemId() == R.id.deleteThis) {

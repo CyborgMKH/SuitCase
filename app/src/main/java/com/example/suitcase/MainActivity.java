@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
         // Adding custom title in the action bar
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.home_title);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         recyclerView = binding.recyclerViewHome;
 

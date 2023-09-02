@@ -1,8 +1,11 @@
 package com.example.suitcase;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Toast;
@@ -11,10 +14,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
 
+import com.example.suitcase.databinding.ActivityDrawerHeaderBinding;
 import com.example.suitcase.databinding.ActivityLoginPageBinding;
 
 public class Login_page extends AppCompatActivity {
-    //validating vires
     ActivityLoginPageBinding binding;
     LoginDBHelper loginDBHelper;
     boolean isReady = false;
@@ -57,8 +60,14 @@ public class Login_page extends AppCompatActivity {
                 if (loginDBHelper.checkEmailPassword(email, password)){
                     Toast.makeText(Login_page.this, "Login Successfully !", Toast.LENGTH_SHORT).show();
 
+                    // Store the user's email in SharedPreferences
+                    SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("userEmail", email); // Store the user's email
+                    editor.apply();
+
                     //After the successfully login the user must be redirected to Home activity or targeted activity
-                    //So, redirecting the user into the targeted activity and finishing the previous logina ctivity
+                    //So, redirecting the user into the targeted activity and finishing the previous login activity
                     Intent intent = new Intent(Login_page.this, MainActivity.class);
                     startActivity(intent);
                     finish();
@@ -84,6 +93,7 @@ public class Login_page extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     //setting up splash api (SplashScreen on android 12 or more)

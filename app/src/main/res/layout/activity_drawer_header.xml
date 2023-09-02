@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/back_drawer"
+    android:layout_height="150dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_marginTop="60dp"
+        android:id="@+id/hiThere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:text="SuitCase"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginLeft="20sp"/>
+
+    <TextView
+        android:textStyle="italic"
+        android:paddingTop="5dp"
+        android:textSize="17sp"
+        android:layout_marginLeft="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/userEmail"
+        android:text="List. Locate. Shop"
+        android:textColor="@color/white"/>
+</LinearLayout>

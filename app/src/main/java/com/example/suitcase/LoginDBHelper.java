@@ -53,6 +53,7 @@ public class LoginDBHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
     public Boolean checkEmailPassword(String email, String password){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Cursor cursor=sqLiteDatabase.rawQuery("select* from Users where email=? and password=?",new String[]{email,password});
@@ -61,5 +62,10 @@ public class LoginDBHelper extends SQLiteOpenHelper {
         }else {
             return false;
         }
+    }
+    public Boolean deleteUserByEmail(String email) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        int rowsAffected = sqLiteDatabase.delete("Users", "email=?", new String[]{email});
+        return rowsAffected > 0;
     }
 }

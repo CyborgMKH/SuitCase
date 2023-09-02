@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SuitCase</string>
+    <string name="navigation_drawer_open" />
+    <string name="navigation_drawer_close" />
 </resources>

@@ -10,50 +10,50 @@
     tools:context=".Suitcase_Main_Menu">
 
     <ImageView
-        android:id="@+id/splash_img"
+        android:id="@+id/profileImg"
         android:layout_width="190dp"
         android:layout_height="190dp"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:background="@drawable/mainmenu"
+        android:background="@drawable/profile_dummy"
         android:elevation="10dp" />
 
     <TextView
-        android:id="@+id/thankYouTextView"
+        android:id="@+id/hiThere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/splash_img"
+        android:layout_below="@+id/profileImg"
         android:layout_centerInParent="true"
-        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:padding="10dp"
-        android:text="Thank You for Using SuitCase App!"
+        android:text="Hi there,"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="32sp"
         android:textStyle="bold" />
+
     <TextView
-        android:justificationMode="inter_word"
-        android:textColor="@color/white"
-        android:layout_below="@+id/thankYouTextView"
-        android:id="@+id/gratitudeTextView"
+        android:id="@+id/userEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="We want to express our heartfelt gratitude for choosing SuitCase as your shopping companion. Your trust and support mean the world to us, and we're thrilled to be a part of your shopping journey."
-        android:textSize="16sp"
+        android:layout_below="@+id/hiThere"
+        android:layout_centerInParent="true"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:text="email@123.com.np"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_marginBottom="25dp"
         android:layout_above="@+id/bottom_navigation"
-        android:id="@+id/LogOutMenu"
+        android:id="@+id/deleteAccount"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="21dp"
         android:layout_marginEnd="10dp"
         android:background="#FF3535"
-        android:text="Log out"
+        android:text="Delete Account"
         android:textColor="@color/white"
         android:textSize="22sp"
         android:textStyle="bold" />

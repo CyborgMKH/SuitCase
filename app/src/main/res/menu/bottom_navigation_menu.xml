@@ -13,6 +13,6 @@
     <item
         android:id="@+id/user"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_admin_panel_settings_24"
-        android:title="User"/>
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Profile"/>
 </menu>

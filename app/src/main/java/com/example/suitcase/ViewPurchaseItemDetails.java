@@ -130,8 +130,8 @@ public class ViewPurchaseItemDetails extends AppCompatActivity {
     }
     void confirmDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete All Data?");
-        builder.setMessage("Are you sure to delete all Data?");
+        builder.setTitle("Delete item?");
+        builder.setMessage("Are you sure to delete this item?");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

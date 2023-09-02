@@ -18,8 +18,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SuitCase"
         tools:targetApi="31">
+        <activity
+            android:name=".AboutUs"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
-        <!-- Define the FileProvider for sharing files -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -29,6 +36,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
         <activity
             android:name=".Purchased_item_list_page"
             android:exported="false">
@@ -58,8 +66,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-
         <activity
             android:name=".Add_Items_page"
             android:exported="false"
@@ -77,13 +83,14 @@
         </activity>
         <activity
             android:name=".Login_page"
-            android:theme="@style/Theme.SplashTheme"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -103,4 +110,5 @@
                 android:value="" />
         </activity>
     </application>
+
 </manifest>

@@ -14,13 +14,13 @@ public class Constants {
     public static final int DB_VERSION = 2; // Increment the version number
 
 
-    //Database Column
+    //Database Column names
     public static final String C_IMAGE = "image";
     public static final String C_NAME = "name";
     public static final String C_PRICE = "price";
     public static final String C_DESCRIPTIONS = "descriptions";
 
-    //Create table query
+    //Create main list table query
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " ("
             + C_IMAGE + " BLOB, "
             + C_NAME + " TEXT PRIMARY KEY, "

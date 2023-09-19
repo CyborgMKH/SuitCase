@@ -72,6 +72,7 @@ public class Add_Items_page extends AppCompatActivity {
             }
         });
 
+        //initializing views with the help of viewBinding with corresponding ID's
         ImageView Img = binding.addItemDummyImg;
         TextView txtName = binding.txtAddItemName;
         TextView txtPrice = binding.txtAddItemPrice;
@@ -95,6 +96,7 @@ public class Add_Items_page extends AppCompatActivity {
                     Toast.makeText(Add_Items_page.this, "Item data already exist. Try adding another !", Toast.LENGTH_SHORT).show();
                     return;// stop further execution
                 }
+                //insert data into corresponding table and showing toast message
                 boolean inserted = mdb.insertRecord(image, name, price, descriptions);
                 if (inserted){
                     Toast.makeText(Add_Items_page.this, "Item added successfully !", Toast.LENGTH_SHORT).show();
@@ -110,6 +112,8 @@ public class Add_Items_page extends AppCompatActivity {
 
             }
         });
+
+        //implementing api for picking images from gallery/camera and additionally setting up crop, compress
         binding.addItemDummyImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,6 +136,7 @@ public class Add_Items_page extends AppCompatActivity {
         return byteArray;
     }
 
+    //overriding the results of picking pictures for items and showing it on the imageView
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

@@ -27,7 +27,7 @@ public class PurchaseCustomAdapter extends RecyclerView.Adapter<PurchaseCustomAd
     private ArrayList<String> price;
     private ArrayList<String> descriptions;
 
-    // Constructor
+    // setting up Constructors
     public PurchaseCustomAdapter(Context context,
                                  ArrayList<byte[]> images,
                                  ArrayList<String> names,
@@ -52,6 +52,7 @@ public class PurchaseCustomAdapter extends RecyclerView.Adapter<PurchaseCustomAd
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
+
         // Binding data for views
         holder.imageView.setImageBitmap(BitmapFactory.decodeByteArray(image.get(position), 0, image.get(position).length));
         holder.nameTextView.setText(name.get(position));

@@ -29,6 +29,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
 dependencies {
@@ -39,13 +40,13 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
-    implementation 'com.github.dhaval2404:imagepicker:2.1'
-    implementation 'com.github.bumptech.glide:glide:4.12.0' // Use the latest version
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0' // Also add this line
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    implementation 'com.gu.android:toolargetool:0.3.0'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
-    implementation 'com.squareup.picasso:picasso:2.8'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0' //circle image library
+    implementation 'com.github.dhaval2404:imagepicker:2.1'//image picker library
+    implementation 'com.github.bumptech.glide:glide:4.12.0'// Glide library for efficient image loading and caching
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'// Glide annotation processor for Glide's code generation
+    implementation 'com.gu.android:toolargetool:0.3.0'//Too-largeTool for identifying oversize app assets
+    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'//splash screen api android 12+
+    implementation 'com.squareup.picasso:picasso:2.8'//Picasso library for image loading and caching
+    implementation 'it.xabaras.android:recyclerview-swipedecorator:1.4'//recycler view swipe-decorator library
 }

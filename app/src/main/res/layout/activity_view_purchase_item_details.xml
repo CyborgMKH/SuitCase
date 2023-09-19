@@ -29,15 +29,17 @@ tools:context=".ViewPurchaseItemDetails">
     android:focusable="true"
     android:padding="10dp"
     android:focusableInTouchMode="true">
+
     <EditText
+        android:id="@+id/txt_addItem_Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Name"
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        android:textColorHint="@color/black"
         android:inputType="text"
-        android:id="@+id/txt_addItem_Name"/>
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="22sp"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </com.google.android.material.textfield.TextInputLayout>
 
@@ -50,15 +52,17 @@ tools:context=".ViewPurchaseItemDetails">
     android:focusable="true"
     android:padding="10dp"
     android:focusableInTouchMode="true">
+
     <EditText
+        android:id="@+id/txt_addItem_Price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Item Price"
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        android:textColorHint="@color/black"
         android:inputType="text"
-        android:id="@+id/txt_addItem_Price"/>
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="22sp"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </com.google.android.material.textfield.TextInputLayout>
 
@@ -71,16 +75,18 @@ tools:context=".ViewPurchaseItemDetails">
     android:focusable="true"
     android:padding="10dp"
     android:focusableInTouchMode="true">
+
     <EditText
-        android:textColor="@color/black"
+        android:id="@+id/txt_addItem_Description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Item Description"
-        android:maxLines="3"
-        android:textSize="22sp"
-        android:textColorHint="@color/black"
         android:inputType="textMultiLine"
-        android:id="@+id/txt_addItem_Description"/>
+        android:maxLines="3"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="22sp"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </com.google.android.material.textfield.TextInputLayout>
 

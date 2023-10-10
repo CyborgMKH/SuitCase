@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,18 +109,38 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
 
-                // Getting the name of the item to be deleted
-                String itemNameToDelete = name.get(position);
-
-                // Deleting the item from the main database and insert it into the purchased database
-                moveItemToPurchasedDatabase(itemNameToDelete, position);
+                switch (direction) {
+                    case ItemTouchHelper.LEFT:
+                        // Getting the name of the item to be deleted
+                        String itemNameDelete1 = name.get(position);
+                        //delete
+                        deleteRecord1(itemNameDelete1,position);
+                        break;
+                    case ItemTouchHelper.RIGHT:
+                        // Getting the name of the item to be deleted
+                        String itemNameToDelete = name.get(position);
+                        //mark as purchased
+                        moveItemToPurchasedDatabase(itemNameToDelete,position);
+                        break;
+                }
+//                // Getting the name of the item to be deleted
+//                String itemNameToDelete = name.get(position);
+//
+//                // Deleting the item from the main database and insert it into the purchased database
+//                moveItemToPurchasedDatabase(itemNameToDelete, position);
             }
             // Add the onChildDraw method to customize the swipe-to-delete behavior
             @Override
             public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
                 new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                        .addBackgroundColor(ContextCompat.getColor(context, R.color.my_background))
-                        .addActionIcon(R.drawable.ic_baseline_add_shopping_cart_24)
+//                        .addBackgroundColor(ContextCompat.getColor(context, R.color.my_background))
+//                        .addActionIcon(R.drawable.ic_baseline_add_shopping_cart_24)
+//                        .create()
+//                        .decorate();
+                        .addSwipeLeftBackgroundColor(Color.parseColor("#FFDD6B55"))
+                        .addSwipeLeftActionIcon(R.drawable.ic_delete_24)
+                        .addSwipeRightBackgroundColor(Color.parseColor("#FF9AEB9D"))
+                        .addSwipeRightActionIcon(R.drawable.ic_baseline_add_shopping_cart_24)
                         .create()
                         .decorate();
 
@@ -162,4 +183,25 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             Toast.makeText(context, "Something went wrong !!!!", Toast.LENGTH_SHORT).show();
         }
     }
+    public void deleteRecord1(String itemNameToDelete, int position) {
+        // Get a reference to your database helper class
+        MyDbHelper dbHelper = new MyDbHelper(context);
+
+        // Delete the item from the database
+        dbHelper.deleteRecord(itemNameToDelete);
+
+        // Remove the item from the adapter's data
+        image.remove(position);
+        name.remove(position);
+        price.remove(position);
+        descriptions.remove(position);
+
+        // Notify the adapter that an item has been removed
+        notifyItemRemoved(position);
+
+        // Optionally, notify the adapter for data changes and display a toast message
+        notifyDataSetChanged();
+        Toast.makeText(context, itemNameToDelete + " deleted!", Toast.LENGTH_SHORT).show();
+    }
+
 }

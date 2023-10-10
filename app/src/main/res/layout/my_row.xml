@@ -20,7 +20,6 @@
             android:padding="12dp"
             tools:ignore="ExtraText">
 
-
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/circleImageView"
                 android:layout_width="60dp"
@@ -38,7 +37,7 @@
                 android:layout_width="318dp"
                 android:layout_height="26dp"
                 android:layout_marginStart="10dp"
-                android:text="Item Name g"
+                android:text="Item Name"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
